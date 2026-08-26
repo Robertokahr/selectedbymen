@@ -34,6 +34,21 @@ html.light {
   --sbm-cream: var(--sbm-ivory);
 }
 
+/* Forest and burgundy stay dark in both themes. Paper tokens would
+   otherwise paint dark type onto those cards in light mode. */
+html.light :is(.bg-forest, .bg-burgundy) {
+  --sbm-ink: var(--sbm-ivory);
+  --sbm-ink-soft: #d8d3b8;
+  --sbm-muted: #9d977c;
+  --sbm-gold: var(--sbm-gold-logo);
+  --sbm-cream: var(--sbm-ivory);
+  --color-ink: var(--sbm-ink);
+  --color-ink-soft: var(--sbm-ink-soft);
+  --color-muted: var(--sbm-muted);
+  --color-gold: var(--sbm-gold);
+  --color-cream: var(--sbm-cream);
+}
+
 @theme inline {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Cormorant Garamond", "Palatino Linotype", Palatino, "Times New Roman", serif;
