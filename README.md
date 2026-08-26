@@ -1,7 +1,3 @@
-El README quedó desactualizado: todavía habla de Hostinger, de subir `dist/` a mano y de modo claro. Te dejo una versión alineada con lo que ya tienes.
-
-Copia esto y reemplaza el `README.md` del proyecto:
-
 ```markdown
 # Selected by Men
 
