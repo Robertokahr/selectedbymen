@@ -1,0 +1,42 @@
+---
+interface Props {
+  class?: string;
+  variant?: 'mark' | 'lockup';
+  showName?: boolean;
+}
+
+const { class: className = '', variant = 'mark', showName = false } = Astro.props;
+---
+
+<a
+  href="/"
+  class:list={['inline-flex shrink-0 items-center', showName && 'gap-3', className]}
+  aria-label="Selected by Men"
+>
+  {
+    variant === 'lockup' ? (
+      <img
+        src="/brand/logo-lockup.png"
+        alt=""
+        width="916"
+        height="871"
+        class="h-[10.5rem] w-auto"
+      />
+    ) : (
+      <img
+        src="/brand/logo-mark.png"
+        alt=""
+        width="331"
+        height="456"
+        class="h-11 w-auto object-contain object-center sm:h-[3.25rem]"
+      />
+    )
+  }
+  {
+    showName && variant === 'mark' && (
+      <span class="font-serif text-[1.2rem] font-medium leading-none tracking-[0.04em] text-gold-logo sm:text-[1.35rem]">
+        Selected <em class="italic font-normal">by</em> Men
+      </span>
+    )
+  }
+</a>

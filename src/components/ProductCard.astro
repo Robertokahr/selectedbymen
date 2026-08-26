@@ -1,0 +1,107 @@
+---
+import { productUrl } from '../lib/affiliate';
+
+interface Props {
+  name: string;
+  description: string;
+  image: string;
+  url: string;
+  price?: string;
+  rating?: number;
+  badge?: string;
+  compact?: boolean;
+}
+
+const {
+  name,
+  description,
+  image,
+  url,
+  price,
+  rating,
+  badge,
+  compact = false,
+} = Astro.props;
+
+const href = productUrl(url);
+const stars = rating ? Math.round(rating) : 0;
+---
+
+<article
+  class:list={[
+    'overflow-hidden border border-gold/20 bg-forest',
+    !compact && 'grid sm:grid-cols-[1fr_11rem]',
+  ]}
+>
+  <div
+    class:list={[
+      'bg-paper-2',
+      compact ? 'h-40 w-full shrink-0' : 'order-1 min-h-[12rem] sm:order-2',
+    ]}
+  >
+    <a href={href} rel="noopener noreferrer" target="_blank" class="block h-full">
+      <img
+        src={image}
+        alt={name}
+        width="640"
+        height="640"
+        class:list={[
+          'h-full w-full object-cover',
+          !compact && 'aspect-square sm:aspect-auto sm:min-h-[12rem]',
+        ]}
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
+  </div>
+  <div class:list={['flex flex-col', compact ? 'p-4' : 'order-2 p-6 sm:order-1 sm:p-7']}>
+    <div class="flex items-start justify-between gap-3">
+      <div class="min-w-0">
+        {
+          badge && (
+            <p class="mb-2 text-[10px] font-medium uppercase tracking-[0.22em] text-gold">
+              {badge}
+            </p>
+          )
+        }
+        <h3
+          class:list={[
+            'font-serif font-medium tracking-wide text-cream',
+            compact ? 'text-lg' : 'text-2xl uppercase',
+          ]}
+        >
+          <a href={href} rel="noopener noreferrer" target="_blank" class="hover:text-gold">
+            {name}
+          </a>
+        </h3>
+      </div>
+      {
+        price && (
+          <p class:list={['shrink-0 font-medium text-gold', compact ? 'text-sm' : 'text-base']}>
+            {price}
+          </p>
+        )
+      }
+    </div>
+    <p class:list={['mt-2 text-ink-soft', compact ? 'text-xs leading-relaxed' : 'text-sm leading-relaxed']}>
+      {description}
+    </p>
+    {
+      rating && (
+        <p class="mt-2 text-xs text-gold/80" aria-label={`${rating} out of 5`}>
+          {'★'.repeat(stars)}
+          {'☆'.repeat(5 - stars)}
+          <span class="ml-1 text-muted">{rating.toFixed(1)}</span>
+        </p>
+      )
+    }
+    <a
+      href={href}
+      rel="noopener noreferrer"
+      target="_blank"
+      class:list={['btn btn-primary mt-auto self-start', compact ? 'btn-sm mt-4' : 'mt-6']}
+    >
+      View on Amazon
+    </a>
+  </div>
+</article>

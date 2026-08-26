@@ -1,0 +1,123 @@
+---
+import { nav } from '../data/site';
+import { categories } from '../data/categories';
+import Logo from './Logo.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+const pathname = Astro.url.pathname;
+
+function isActive(href: string) {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-50 overflow-visible border-b border-gold/15 bg-forest">
+  <a
+    href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-burgundy focus:px-4 focus:py-2 focus:text-cream"
+  >
+    Skip to content
+  </a>
+  <div
+    class="mx-auto flex min-h-[4.75rem] max-w-6xl items-center justify-between gap-6 px-5 py-2.5 sm:min-h-20 sm:px-8 sm:py-3"
+  >
+    <Logo showName />
+
+    <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'text-[11px] font-medium uppercase tracking-[0.22em] transition',
+              isActive(item.href)
+                ? 'text-cream'
+                : 'text-cream/70 hover:text-gold',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <details class="group relative">
+        <summary
+          class="cursor-pointer list-none text-[11px] font-medium uppercase tracking-[0.22em] text-cream/70 transition hover:text-gold [&::-webkit-details-marker]:hidden"
+        >
+          Categories
+        </summary>
+        <div
+          class="absolute right-0 top-full z-20 mt-3 w-64 border border-gold/20 bg-forest p-2 shadow-xl shadow-black/40"
+        >
+          {
+            categories.map((category) => (
+              <a
+                href={`/category/${category.slug}/`}
+                class="flex items-center justify-between px-3 py-2.5 text-sm text-cream/80 transition hover:bg-black/30 hover:text-gold"
+              >
+                <span>{category.title}</span>
+                <span class="font-serif text-gold">{category.number}</span>
+              </a>
+            ))
+          }
+        </div>
+      </details>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <ThemeToggle />
+      <button
+        type="button"
+        id="menu-button"
+        class="inline-flex h-10 w-10 items-center justify-center border border-gold/25 text-cream lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open menu"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-gold/15 bg-forest px-5 py-5 lg:hidden" hidden>
+    <nav class="flex flex-col gap-1" aria-label="Mobile">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class="px-3 py-3 text-sm uppercase tracking-[0.18em] text-cream hover:text-gold"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <p class="px-3 pb-1 pt-4 text-[11px] font-medium uppercase tracking-[0.22em] text-gold">
+        Categories
+      </p>
+      {
+        categories.map((category) => (
+          <a
+            href={`/category/${category.slug}/`}
+            class="px-3 py-3 text-sm text-cream hover:text-gold"
+          >
+            {category.title}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const button = document.getElementById('menu-button');
+  const menu = document.getElementById('mobile-menu');
+
+  button?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    menu?.toggleAttribute('hidden', !open);
+    button.setAttribute('aria-expanded', String(open));
+    button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+</script>

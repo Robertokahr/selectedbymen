@@ -1,0 +1,40 @@
+---
+import type { Category } from '../data/categories';
+import { categoryImageSrc } from '../data/categoryImages';
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+const imageSrc = categoryImageSrc(category.slug);
+---
+
+<a
+  href={`/category/${category.slug}/`}
+  class="group grid min-h-44 overflow-hidden border border-gold/20 bg-forest transition hover:border-gold/50 sm:grid-cols-[1fr_9.5rem]"
+>
+  <div class="order-2 flex flex-col justify-between p-6 sm:order-1">
+    <div class="flex items-start justify-between">
+      <span class="font-serif text-2xl text-gold">{category.number}</span>
+      <span class="text-[11px] uppercase tracking-[0.18em] text-muted transition group-hover:text-gold">
+        View →
+      </span>
+    </div>
+    <div class="mt-8">
+      <h3 class="font-serif text-3xl font-medium uppercase tracking-wide text-cream">{category.title}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-soft">{category.description}</p>
+    </div>
+  </div>
+  <div class="order-1 min-h-40 bg-paper-2 sm:order-2 sm:min-h-0">
+    <img
+      src={imageSrc}
+      alt={`${category.title} still life`}
+      width="720"
+      height="480"
+      class="h-full w-full object-cover"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+</a>

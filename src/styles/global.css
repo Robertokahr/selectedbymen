@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --sbm-black: #0f0f0f;
+  --sbm-forest: #1a3023;
+  --sbm-forest-hover: #243d37;
+  --sbm-gold: #c6a86b;
+  --sbm-gold-logo: #c6a86b;
+  --sbm-bronze: #8b5a2b;
+  --sbm-burgundy: #4a1f1f;
+  --sbm-burgundy-hover: #5e2a2a;
+  --sbm-ivory: #f5f0e1;
+
+  --sbm-paper: #0f0f0f;
+  --sbm-paper-2: #16140f;
+  --sbm-paper-3: var(--sbm-forest);
+  --sbm-ink: var(--sbm-ivory);
+  --sbm-ink-soft: #d8d3b8;
+  --sbm-muted: #9d977c;
+  --sbm-line: #2c3f3a;
+  --sbm-cream: var(--sbm-ivory);
+}
+
+html.light {
+  --sbm-gold: #8b5a2b;
+  --sbm-paper: #eadfc8;
+  --sbm-paper-2: #e1d3b8;
+  --sbm-paper-3: #d6c8ac;
+  --sbm-ink: #1a3023;
+  --sbm-ink-soft: #3a453c;
+  --sbm-muted: #6a6356;
+  --sbm-line: #cfc1a6;
+  --sbm-cream: var(--sbm-ivory);
+}
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  --color-paper: var(--sbm-paper);
+  --color-paper-2: var(--sbm-paper-2);
+  --color-paper-3: var(--sbm-paper-3);
+  --color-ink: var(--sbm-ink);
+  --color-ink-soft: var(--sbm-ink-soft);
+  --color-muted: var(--sbm-muted);
+  --color-line: var(--sbm-line);
+  --color-forest: var(--sbm-forest);
+  --color-forest-hover: var(--sbm-forest-hover);
+  --color-gold: var(--sbm-gold);
+  --color-gold-logo: var(--sbm-gold-logo);
+  --color-bronze: var(--sbm-bronze);
+  --color-burgundy: var(--sbm-burgundy);
+  --color-burgundy-hover: var(--sbm-burgundy-hover);
+  --color-brass: var(--sbm-gold);
+  --color-cream: var(--sbm-cream);
+  --color-black: var(--sbm-black);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--sbm-paper);
+  color: var(--sbm-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--sbm-burgundy);
+  color: var(--sbm-ivory);
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sbm-gold);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-sm {
+  padding: 0.55rem 0.8rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+}
+
+.btn-primary {
+  background-color: var(--sbm-burgundy);
+  color: var(--sbm-ivory);
+}
+
+.btn-primary:hover {
+  background-color: var(--sbm-burgundy-hover);
+}
+
+.btn-ghost {
+  border: 1px solid var(--sbm-line);
+  color: var(--sbm-ink);
+}
+
+.btn-ghost:hover {
+  border-color: var(--sbm-gold);
+  color: var(--sbm-gold);
+}
+
+.prose-article {
+  --tw-prose-body: var(--sbm-ink-soft);
+  --tw-prose-headings: var(--sbm-ink);
+  --tw-prose-lead: var(--sbm-ink-soft);
+  --tw-prose-links: var(--sbm-gold);
+  --tw-prose-bold: var(--sbm-ink);
+  --tw-prose-counters: var(--sbm-muted);
+  --tw-prose-bullets: var(--sbm-gold);
+  --tw-prose-hr: var(--sbm-line);
+  --tw-prose-quotes: var(--sbm-ink);
+  --tw-prose-quote-borders: var(--sbm-gold);
+  --tw-prose-captions: var(--sbm-muted);
+  --tw-prose-code: var(--sbm-ink);
+  --tw-prose-pre-code: var(--sbm-ivory);
+  --tw-prose-pre-bg: var(--sbm-forest);
+  --tw-prose-th-borders: var(--sbm-line);
+  --tw-prose-td-borders: var(--sbm-line);
+}
+
+.prose-article h2,
+.prose-article h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.prose-article a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.prose-article blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  border-left-width: 2px;
+}

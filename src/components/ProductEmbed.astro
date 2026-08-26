@@ -1,0 +1,15 @@
+---
+import ProductCard from './ProductCard.astro';
+import { getProductById } from '../lib/posts';
+
+interface Props {
+  of: string;
+}
+
+const product = await getProductById(Astro.props.of);
+const { id: _id, ...card } = product;
+---
+
+<aside class="not-prose my-10" aria-label={card.name}>
+  <ProductCard {...card} />
+</aside>

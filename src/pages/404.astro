@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="That page does not exist on Selected by Men."
+  noindex
+>
+  <section class="mx-auto max-w-2xl px-5 py-28 text-center sm:px-8">
+    <p class="font-serif text-2xl text-gold">404</p>
+    <h1 class="mt-4 font-serif text-5xl font-medium tracking-tight text-ink">This page did not make the cut.</h1>
+    <p class="mt-5 text-ink-soft">
+      The link may be old, or the guide may have moved. Start from the
+      recommendations instead.
+    </p>
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/" class="btn btn-primary">
+        Home
+      </a>
+      <a href="/blog/" class="btn btn-ghost">
+        Recommendations
+      </a>
+    </div>
+  </section>
+</BaseLayout>

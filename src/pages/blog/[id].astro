@@ -1,0 +1,162 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryBadge from '../../components/CategoryBadge.astro';
+import ProductEmbed from '../../components/ProductEmbed.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPublishedPosts, formatDate, readingTime } from '../../lib/posts';
+import { getCategory } from '../../data/categories';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const category = getCategory(post.data.category);
+const minutes = readingTime(post.body ?? '');
+const allPosts = await getPublishedPosts();
+const sameCategory = allPosts.filter(
+  (entry) => entry.id !== post.id && entry.data.category === post.data.category,
+);
+const related = (
+  sameCategory.length >= 2
+    ? sameCategory
+    : [
+        ...sameCategory,
+        ...allPosts.filter(
+          (entry) =>
+            entry.id !== post.id &&
+            !sameCategory.some((other) => other.id === entry.id),
+        ),
+      ]
+).slice(0, 2);
+
+const heroSrc = post.data.heroImage;
+const canonicalImage = new URL(heroSrc, site.url).href;
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  image: canonicalImage,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: post.data.author,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: site.name,
+    url: site.url,
+  },
+  mainEntityOfPage: new URL(`/blog/${post.id}/`, site.url).href,
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Recommendations', item: `${site.url}/blog/` },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: post.data.title,
+      item: `${site.url}/blog/${post.id}/`,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={canonicalImage}
+  type="article"
+  publishedTime={post.data.pubDate}
+  modifiedTime={post.data.updatedDate ?? post.data.pubDate}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+
+  <article class="pb-24">
+    <header class="mx-auto max-w-3xl px-5 pt-14 sm:px-8 sm:pt-20">
+      <nav class="text-xs text-muted" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-gold">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/blog/" class="hover:text-gold">Recommendations</a>
+        {
+          category && (
+            <>
+              <span class="mx-2">/</span>
+              <a href={`/category/${category.slug}/`} class="hover:text-gold">
+                {category.title}
+              </a>
+            </>
+          )
+        }
+      </nav>
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <CategoryBadge slug={post.data.category} />
+        {
+          post.data.tags.map((tag) => (
+            <span class="text-xs uppercase tracking-[0.14em] text-muted">#{tag}</span>
+          ))
+        }
+      </div>
+      <h1 class="mt-5 font-serif text-4xl font-medium tracking-tight text-ink sm:text-6xl">
+        {post.data.title}
+      </h1>
+      <p class="mt-5 text-lg leading-relaxed text-ink-soft">{post.data.description}</p>
+      <p class="mt-6 text-sm text-muted">
+        <span>{post.data.author}</span>
+        <span class="mx-2">·</span>
+        <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+        <span class="mx-2">·</span>
+        <span>{minutes}</span>
+      </p>
+    </header>
+
+    <div class="mx-auto mt-10 max-w-4xl px-5 sm:px-8">
+      <img
+        src={heroSrc}
+        alt={post.data.heroAlt}
+        width="1400"
+        height="788"
+        class="aspect-[16/9] w-full border border-gold/15 object-cover"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
+
+    <div class="mx-auto mt-12 max-w-3xl px-5 sm:px-8">
+      <div class="prose prose-article max-w-none prose-lg prose-headings:text-ink prose-a:text-gold">
+        <Content components={{ Product: ProductEmbed }} />
+      </div>
+    </div>
+  </article>
+
+  {
+    related.length > 0 && (
+      <section class="border-t border-gold/15 bg-paper">
+        <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+          <h2 class="font-serif text-3xl font-medium tracking-tight text-ink">Keep reading</h2>
+          <div class="mt-8 grid gap-10 md:grid-cols-2">
+            {related.map((entry) => (
+              <PostCard post={entry} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

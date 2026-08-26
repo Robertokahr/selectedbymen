@@ -1,0 +1,25 @@
+---
+import { getCategory } from '../data/categories';
+
+interface Props {
+  slug: string;
+  class?: string;
+}
+
+const { slug, class: className = '' } = Astro.props;
+const category = getCategory(slug);
+---
+
+{
+  category && (
+    <a
+      href={`/category/${category.slug}/`}
+      class:list={[
+        'inline-flex items-center border border-gold/25 bg-forest px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-gold transition hover:border-gold hover:text-cream',
+        className,
+      ]}
+    >
+      {category.title}
+    </a>
+  )
+}

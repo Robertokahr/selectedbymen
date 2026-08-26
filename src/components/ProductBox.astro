@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ProductCard from './ProductCard.astro';
+
+interface Props {
+  products: CollectionEntry<'posts'>['data']['products'];
+  title?: string;
+  compact?: boolean;
+}
+
+const { products, title = 'Our picks from this guide', compact = false } = Astro.props;
+---
+
+{
+  products.length > 0 && (
+    <div class="border border-gold/20 bg-paper-2 p-6 sm:p-8">
+      <p class="eyebrow">Selected products</p>
+      <h2 class="mt-2 font-serif text-3xl font-medium tracking-tight text-ink">{title}</h2>
+      <p class="mt-2 text-sm text-muted">
+        Prices and availability change. Check the Amazon page before you buy.
+      </p>
+      <div class="mt-6 grid gap-4">
+        {products.map((product) => (
+          <ProductCard {...product} compact={compact} />
+        ))}
+      </div>
+    </div>
+  )
+}

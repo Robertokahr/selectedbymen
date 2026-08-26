@@ -1,0 +1,146 @@
+[
+  {
+    "name": "grooming",
+    "path": "/blog/the-only-grooming-routine-you-need/",
+    "hero": {
+      "src": "/images/posts/grooming.jpg",
+      "alt": "A marble bathroom counter with a safety razor, shaving brush, ceramic bowl, and dark glass bottle in morning light.",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "clientWidth": 830,
+      "clientHeight": 466,
+      "complete": true
+    },
+    "products": [
+      {
+        "src": "/images/products/razor.jpg",
+        "alt": "Merkur 34C Safety Razor",
+        "naturalWidth": 1024,
+        "naturalHeight": 1024,
+        "clientWidth": 176,
+        "clientHeight": 232,
+        "complete": true
+      },
+      {
+        "src": "/images/products/shaving-brush.jpg",
+        "alt": "Parker Safety Razor Shaving Brush",
+        "naturalWidth": 1024,
+        "naturalHeight": 1024,
+        "clientWidth": 176,
+        "clientHeight": 232,
+        "complete": true
+      },
+      {
+        "src": "/images/products/moisturizer.jpg",
+        "alt": "CeraVe Moisturizing Cream",
+        "naturalWidth": 1024,
+        "naturalHeight": 1024,
+        "clientWidth": 176,
+        "clientHeight": 232,
+        "complete": true
+      }
+    ],
+    "asins": [
+      "https://www.amazon.com/dp/B002A8JO1Q",
+      "https://www.amazon.com/dp/B004DEXE48",
+      "https://www.amazon.com/dp/B00TTD9BRC"
+    ],
+    "shot": "tmp-screens/grooming-article.png"
+  },
+  {
+    "name": "tech",
+    "path": "/blog/everyday-carry-tech-that-earns-its-place/",
+    "hero": {
+      "src": "/images/posts/tech.jpg",
+      "alt": "Headphones, a slim power bank, and a notebook arranged on a dark oak desk under a warm lamp.",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "clientWidth": 830,
+      "clientHeight": 466,
+      "complete": true
+    },
+    "products": [
+      {
+        "src": "/images/products/headphones.jpg",
+        "alt": "Sony WH-1000XM5",
+        "naturalWidth": 1024,
+        "naturalHeight": 1024,
+        "clientWidth": 176,
+        "clientHeight": 232,
+        "complete": true
+      },
+      {
+        "src": "/images/products/powerbank.jpg",
+        "alt": "Anker 737 Power Bank",
+        "naturalWidth": 1024,
+        "naturalHeight": 1024,
+        "clientWidth": 176,
+        "clientHeight": 232,
+        "complete": true
+      },
+      {
+        "src": "/images/products/kindle.jpg",
+        "alt": "Kindle Paperwhite",
+        "naturalWidth": 1024,
+        "naturalHeight": 1024,
+        "clientWidth": 176,
+        "clientHeight": 232,
+        "complete": true
+      }
+    ],
+    "asins": [
+      "https://www.amazon.com/dp/B09XS7JWHH",
+      "https://www.amazon.com/dp/B09VPHVT2Z",
+      "https://www.amazon.com/dp/B0CFPJYX7P"
+    ],
+    "shot": "tmp-screens/tech-article.png"
+  },
+  {
+    "name": "style",
+    "path": "/blog/a-capsule-wardrobe-that-actually-works/",
+    "hero": {
+      "src": "/images/posts/style.jpg",
+      "alt": "White sneakers, a navy merino sweater, and a coiled leather belt on a wooden bench in soft daylight.",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "clientWidth": 830,
+      "clientHeight": 466,
+      "complete": true
+    },
+    "products": [
+      {
+        "src": "/images/products/sneakers.jpg",
+        "alt": "adidas Stan Smith",
+        "naturalWidth": 1024,
+        "naturalHeight": 1024,
+        "clientWidth": 176,
+        "clientHeight": 232,
+        "complete": true
+      },
+      {
+        "src": "/images/products/sweater.jpg",
+        "alt": "Icebreaker Merino Cable Knit Crewe",
+        "naturalWidth": 1024,
+        "naturalHeight": 1024,
+        "clientWidth": 176,
+        "clientHeight": 264,
+        "complete": true
+      },
+      {
+        "src": "/images/products/belt.jpg",
+        "alt": "Timberland 40mm Leather Belt",
+        "naturalWidth": 1024,
+        "naturalHeight": 1024,
+        "clientWidth": 176,
+        "clientHeight": 232,
+        "complete": true
+      }
+    ],
+    "asins": [
+      "https://www.amazon.com/dp/B00TQ9GXHA",
+      "https://www.amazon.com/dp/B0D3VM3TTZ",
+      "https://www.amazon.com/dp/B0877PQWM3"
+    ],
+    "shot": "tmp-screens/style-article.png"
+  }
+]
