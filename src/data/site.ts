@@ -8,7 +8,7 @@ export const site = {
   email: 'contact@selectedbymen.com',
   locale: 'en_US',
   author: 'Selected by Men',
-  amazonTag: '',
+  amazonTag: 'selectedbymen-20',
   socials: {
     instagram: 'https://www.instagram.com/selectedbymen',
     x: 'https://x.com/selectedbymen',
