@@ -85,6 +85,27 @@ Además del frontmatter:
 Categorías: `src/data/categories.ts`  
 Datos del sitio (email, Amazon tag, URL): `src/data/site.ts`
 
+## Selected by Men — voice
+
+Language: English. Audience: men in the US.  
+Tone: quiet luxury, editorial, masculine, dry. No guru, no hype, no “game changer”, no emojis.
+
+Structure of every guide:
+
+- Hook in 2–3 sentences
+- Who it is for / who should skip
+- The picks (2–5), each: why it earned the spot, one caveat
+- How to use / routine
+- Short close
+
+Products: real names and facts from the Amazon listing only. No invented specs.
+
+Links: keep the affiliate URL exactly as given (tag `selectedbymen-20`).
+
+Images: local paths `/posts/` and `/products/` only.
+
+Look: dark, charcoal, forest green, brass. Do not change CSS or layout unless asked.
+
 ## Antes de monetizar
 
 1. Pon tu tag de Amazon en `src/data/site.ts` (`amazonTag`).
