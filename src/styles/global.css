@@ -177,3 +177,14 @@ body {
   font-size: 1.25rem;
   border-left-width: 2px;
 }
+
+.prose-article table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.prose-article th {
+  white-space: nowrap;
+}

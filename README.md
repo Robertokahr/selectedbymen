@@ -70,9 +70,17 @@ products:
 Write the article in English. Use ## headings.
 ```
 
-4. Fotos en `public/posts/` (portada) y `public/products/` (fichas).
+4. Fotos en `public/posts/` (portada) y `public/products/` (fichas). En roundups, usa la foto de ficha de Amazon, no imágenes generadas, salvo que se pida lo contrario.
 5. `draft: true` oculta el post en producción; se ve en `npm run dev`.
 6. `git push` para publicar.
+
+### Roundups (“N best …”)
+
+Además del frontmatter:
+
+1. **Metodología** cerca del inicio: criterios comprobables (protección/materiales, versatilidad, batería o durabilidad, uso real, ergonomía, precio, opiniones de Amazon). No inventar tests de laboratorio.
+2. **Tabla comparativa** antes de las fichas: producto, precio, 3 specs clave, “best for”.
+3. **SEO:** el title lleva el término principal; en el cuerpo, 5–8 búsquedas hermanas escritas como frases normales (una o dos veces cada una). Nada de listas de keywords.
 
 Categorías: `src/data/categories.ts`  
 Datos del sitio (email, Amazon tag, URL): `src/data/site.ts`
