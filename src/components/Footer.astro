@@ -16,6 +16,38 @@ import Logo from './Logo.astro';
         <p class="mt-4 text-sm text-muted">
           <a class="hover:text-gold" href={`mailto:${site.email}`}>{site.email}</a>
         </p>
+        <ul class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+          <li>
+            <a
+              class="text-ink-soft hover:text-gold"
+              href={site.socials.instagram}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a
+              class="text-ink-soft hover:text-gold"
+              href={site.socials.x}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              X
+            </a>
+          </li>
+          <li>
+            <a
+              class="text-ink-soft hover:text-gold"
+              href={site.socials.pinterest}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Pinterest
+            </a>
+          </li>
+        </ul>
       </div>
 
       <div class="md:col-span-3">

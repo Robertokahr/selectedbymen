@@ -3,7 +3,8 @@ export const site = {
   shortName: 'SBM',
   url: 'https://selectedbymen.com',
   description:
-    'Practical product recommendations for men who value quality, style, and smart buying decisions. Honest comparisons and Amazon picks for grooming, style, tech, fitness, home, and everyday life.',
+    'Honest product recommendations for men: grooming routines, capsule wardrobes, everyday carry tech, and Amazon picks for style, fitness, home, and daily life.',
+  homeTitle: 'Product recommendations for men',
   tagline: 'Buy fewer things. Own better ones.',
   email: 'contact@selectedbymen.com',
   locale: 'en_US',

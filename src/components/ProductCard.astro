@@ -1,5 +1,5 @@
 ---
-import { productUrl } from '../lib/affiliate';
+import { productLinkRel, productUrl } from '../lib/affiliate';
 
 interface Props {
   name: string;
@@ -24,6 +24,7 @@ const {
 } = Astro.props;
 
 const href = productUrl(url);
+const rel = productLinkRel;
 const stars = rating ? Math.round(rating) : 0;
 ---
 
@@ -39,7 +40,7 @@ const stars = rating ? Math.round(rating) : 0;
       compact ? 'h-40 w-full shrink-0' : 'order-1 min-h-[12rem] sm:order-2',
     ]}
   >
-    <a href={href} rel="noopener noreferrer" target="_blank" class="block h-full">
+    <a href={href} rel={rel} target="_blank" class="block h-full">
       <img
         src={image}
         alt={name}
@@ -70,7 +71,7 @@ const stars = rating ? Math.round(rating) : 0;
             compact ? 'text-lg' : 'text-2xl uppercase',
           ]}
         >
-          <a href={href} rel="noopener noreferrer" target="_blank" class="hover:text-gold">
+          <a href={href} rel={rel} target="_blank" class="hover:text-gold">
             {name}
           </a>
         </h3>
@@ -97,7 +98,7 @@ const stars = rating ? Math.round(rating) : 0;
     }
     <a
       href={href}
-      rel="noopener noreferrer"
+      rel={rel}
       target="_blank"
       class:list={['btn btn-primary mt-auto self-start', compact ? 'btn-sm mt-4' : 'mt-6']}
     >

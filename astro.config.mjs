@@ -3,6 +3,9 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import { publishedCategorySlugs } from './src/lib/publishedCategories.ts';
+
+const indexedCategories = publishedCategorySlugs();
 
 export default defineConfig({
   site: 'https://selectedbymen.com',
@@ -13,7 +16,14 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: (page) => !page.includes('/404'),
+      filter: (page) => {
+        if (page.includes('/404')) return false;
+        const categoryMatch = page.match(/\/category\/([^/]+)\/?$/);
+        if (categoryMatch && !indexedCategories.has(categoryMatch[1])) {
+          return false;
+        }
+        return true;
+      },
       changefreq: 'weekly',
       lastmod: new Date(),
     }),

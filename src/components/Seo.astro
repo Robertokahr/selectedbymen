@@ -9,6 +9,7 @@ interface Props {
   publishedTime?: Date;
   modifiedTime?: Date;
   noindex?: boolean;
+  nofollow?: boolean;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
   publishedTime,
   modifiedTime,
   noindex = false,
+  nofollow = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
@@ -29,7 +31,14 @@ const og = image ?? new URL('/og.jpg', site.url).href;
 <title>{pageTitle}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+{
+  (noindex || nofollow) && (
+    <meta
+      name="robots"
+      content={[noindex && 'noindex', nofollow && 'nofollow'].filter(Boolean).join(', ')}
+    />
+  )
+}
 
 <meta property="og:site_name" content={site.name} />
 <meta property="og:type" content={type} />

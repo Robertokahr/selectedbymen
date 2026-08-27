@@ -2,6 +2,9 @@ import { site } from '../data/site';
 
 const ASIN = /\/(?:dp|gp\/product)\/([A-Z0-9]{10})/i;
 
+/** Google: mark affiliate / paid placement links as sponsored. */
+export const productLinkRel = 'sponsored noopener noreferrer';
+
 export function productUrl(url: string): string {
   try {
     const parsed = new URL(url);
