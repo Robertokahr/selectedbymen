@@ -30,11 +30,6 @@ export async function getPublishedPosts(): Promise<Post[]> {
   );
 }
 
-export async function getFeaturedPosts(): Promise<Post[]> {
-  const posts = await getPublishedPosts();
-  return posts.filter((post) => post.data.featured);
-}
-
 export async function getPostsByCategory(slug: string): Promise<Post[]> {
   const posts = await getPublishedPosts();
   return posts.filter((post) => post.data.category === slug);

@@ -10,7 +10,7 @@ interface Props {
 
 const { post, featured = false } = Astro.props;
 const minutes = readingTime(post.body ?? '');
-const displayDate = post.data.updatedDate ?? post.data.pubDate;
+const displayDate = post.data.pubDate;
 ---
 
 <article class:list={['group', featured && 'md:grid md:grid-cols-2 md:gap-8']}>
