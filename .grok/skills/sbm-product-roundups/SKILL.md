@@ -1,12 +1,14 @@
 ---
 name: sbm-product-roundups
 description: >
-  Rules for Selected by Men "best of" / comparison posts (N best X for men).
+  Rules for Selected by Men ranked "best of" / comparison posts (N best X for men).
   Use when writing or editing roundups, buying guides with a ranked list, or
   "best [product] for men" articles. Also when the user runs /sbm-product-roundups.
 ---
 
 # Product roundups
+
+Read `editorial.md` first (skip image sections). This skill is the extra layer for ranked lists.
 
 Every ranked list on Selected by Men needs three things the specs-only draft usually misses.
 
@@ -37,7 +39,7 @@ Wrap-friendly: `global.css` already makes `.prose-article table` scroll horizont
 
 ## 3. Related search terms, written as English
 
-The H1/title can be the head term (`5 Best Ball Trimmers for Men in 2026`). In the body, use related queries **once or twice each**, in sentences, never as a comma list.
+The title tag / `seoTitle` can carry the head term (`5 Best Ball Trimmers for Men in 2026`). The H1 should be editorial enough that the page is not a factory stamp — see `editorial.md` §§34–35. In the body, use related queries **once or twice each**, in sentences, never as a comma list.
 
 Example for that post: best trimmer for balls, best groin trimmer for men, pubic hair trimmer, men's intimate trimmer, ball shaver, groin hair trimmer, below-the-belt trimmer.
 
