@@ -17,14 +17,20 @@ const reasons = [
   {
     title: 'We edit, we do not dump.',
     body: 'Every recommendation has to earn its place. If a product is average, it does not make the list — no matter how well it converts.',
+    href: '/about/',
+    link: 'About the desk',
   },
   {
     title: 'Criteria you can check.',
-    body: 'We look at materials, real-world reviews, return policies, and whether the thing will still feel right a year from now.',
+    body: 'Design, a year of use, price against materials, verified owner reviews, and whether it is worth telling a friend.',
+    href: '/standards/',
+    link: 'Read the standards',
   },
   {
     title: 'Clear about the money.',
-    body: 'Nobody buys a ranking here. If we would not buy it ourselves, we will not send you there.',
+    body: 'This site is an Amazon Associate. Brands cannot buy a ranking. Commission rate does not set the order.',
+    href: '/how-we-make-money/',
+    link: 'How we make money',
   },
 ];
 ---
@@ -44,7 +50,7 @@ const reasons = [
       <a href="/blog/" class="btn btn-primary">
         Browse recommendations
       </a>
-      <a href="/about/" class="btn btn-ghost">
+      <a href="/standards/" class="btn btn-ghost">
         How we choose
       </a>
     </div>
@@ -115,6 +121,12 @@ const reasons = [
               <p class="font-serif text-2xl text-gold">0{index + 1}</p>
               <h3 class="mt-4 font-serif text-2xl font-medium tracking-tight text-ink">{reason.title}</h3>
               <p class="mt-3 text-sm leading-relaxed text-muted">{reason.body}</p>
+              <a
+                href={reason.href}
+                class="mt-4 inline-flex text-[11px] font-medium uppercase tracking-[0.18em] text-gold hover:text-cream"
+              >
+                {reason.link} →
+              </a>
             </article>
           ))
         }

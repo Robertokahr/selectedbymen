@@ -1,0 +1,33 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  eyebrow?: string;
+}
+
+const { title, description, heading, eyebrow } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
+    {
+      eyebrow && (
+        <p class="eyebrow">{eyebrow}</p>
+      )
+    }
+    <h1
+      class:list={[
+        'font-serif text-5xl font-medium tracking-tight text-ink sm:text-6xl',
+        eyebrow ? 'mt-4' : 'mt-0',
+      ]}
+    >
+      {heading}
+    </h1>
+    <div class="prose prose-article mt-10 max-w-none prose-lg">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

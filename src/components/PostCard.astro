@@ -10,6 +10,7 @@ interface Props {
 
 const { post, featured = false } = Astro.props;
 const minutes = readingTime(post.body ?? '');
+const displayDate = post.data.updatedDate ?? post.data.pubDate;
 ---
 
 <article class:list={['group', featured && 'md:grid md:grid-cols-2 md:gap-8']}>
@@ -30,8 +31,8 @@ const minutes = readingTime(post.body ?? '');
   <div class:list={['pt-5', featured && 'md:flex md:flex-col md:justify-center md:pt-0']}>
     <div class="flex flex-wrap items-center gap-3">
       <CategoryBadge slug={post.data.category} />
-      <time class="text-xs text-muted" datetime={post.data.pubDate.toISOString()}>
-        {formatDate(post.data.pubDate)}
+      <time class="text-xs text-muted" datetime={displayDate.toISOString()}>
+        {formatDate(displayDate)}
       </time>
       <span class="text-xs text-muted">{minutes}</span>
     </div>

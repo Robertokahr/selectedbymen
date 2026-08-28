@@ -74,10 +74,17 @@ const breadcrumbLd = {
     },
   ],
 };
+
+const publishedLabel = formatDate(post.data.pubDate);
+const updatedLabel = post.data.updatedDate
+  ? formatDate(post.data.updatedDate)
+  : null;
+const showUpdated = Boolean(updatedLabel && updatedLabel !== publishedLabel);
 ---
 
 <BaseLayout
   title={post.data.title}
+  seoTitle={post.data.seoTitle}
   description={post.data.description}
   image={canonicalImage}
   type="article"
@@ -117,9 +124,19 @@ const breadcrumbLd = {
       </h1>
       <p class="mt-5 text-lg leading-relaxed text-ink-soft">{post.data.description}</p>
       <p class="mt-6 text-sm text-muted">
-        <span>{post.data.author}</span>
+        <a class="hover:text-gold" href="/about/">{post.data.author}</a>
         <span class="mx-2">·</span>
-        <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+        <time datetime={post.data.pubDate.toISOString()}>Published {publishedLabel}</time>
+        {
+          showUpdated && post.data.updatedDate && (
+            <>
+              <span class="mx-2">·</span>
+              <time datetime={post.data.updatedDate.toISOString()}>
+                Updated {updatedLabel}
+              </time>
+            </>
+          )
+        }
         <span class="mx-2">·</span>
         <span>{minutes}</span>
       </p>

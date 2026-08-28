@@ -1,91 +1,50 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
-
-const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID as string | undefined;
-const formAction = formspreeId
-  ? `https://formspree.io/f/${formspreeId}`
-  : `mailto:${site.email}`;
 ---
 
 <BaseLayout
   title="Contact"
-  description="Get in touch with Selected by Men — partnerships, corrections, and reader questions."
+  description="Email Selected by Men for corrections, product suggestions, and questions. There is no form."
 >
-  <section class="mx-auto grid max-w-6xl gap-16 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-2">
-    <div>
-      <p class="eyebrow">Say hello</p>
-      <h1 class="mt-4 font-serif text-5xl font-medium tracking-tight text-ink">Contact</h1>
-      <p class="mt-5 max-w-md text-lg leading-relaxed text-ink-soft">
-        Corrections, product suggestions, and partnership notes are welcome.
-        We read everything. We do not promise a same-day reply.
-      </p>
-      <dl class="mt-10 space-y-6 text-sm">
-        <div>
-          <dt class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold">Email</dt>
-          <dd class="mt-2">
-            <a class="text-lg text-ink hover:text-gold" href={`mailto:${site.email}`}>
-              {site.email}
-            </a>
-          </dd>
-        </div>
-        <div>
-          <dt class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold">Press &amp; collabs</dt>
-          <dd class="mt-2 text-ink-soft">
-            If you want us to consider a product, send the facts: price, materials,
-            where it is made, and why it belongs here. Photos help. Hype does not.
-          </dd>
-        </div>
-      </dl>
-    </div>
-
-    <form
-      action={formAction}
-      method={formspreeId ? 'POST' : 'GET'}
-      class="border border-gold/20 bg-paper-2 p-6 sm:p-8"
-    >
-      <div class="grid gap-5">
-        <label class="block">
-          <span class="text-xs font-medium uppercase tracking-[0.16em] text-gold">Name</span>
-          <input
-            required
-            type="text"
-            name="name"
-            autocomplete="name"
-            class="mt-2 h-12 w-full border border-gold/20 bg-paper px-4 text-ink outline-none transition focus:border-gold"
-          />
-        </label>
-        <label class="block">
-          <span class="text-xs font-medium uppercase tracking-[0.16em] text-gold">Email</span>
-          <input
-            required
-            type="email"
-            name="email"
-            autocomplete="email"
-            class="mt-2 h-12 w-full border border-gold/20 bg-paper px-4 text-ink outline-none transition focus:border-gold"
-          />
-        </label>
-        <label class="block">
-          <span class="text-xs font-medium uppercase tracking-[0.16em] text-gold">Message</span>
-          <textarea
-            required
-            name="message"
-            rows="6"
-            class="mt-2 w-full border border-gold/20 bg-paper px-4 py-3 text-ink outline-none transition focus:border-gold"
-          ></textarea>
-        </label>
-        <button type="submit" class="btn btn-primary">
-          Send message
-        </button>
-        {
-          !formspreeId && (
-            <p class="text-xs text-muted">
-              This form opens your email client until a Formspree ID is added.
-              See the README to connect a backend-free inbox.
-            </p>
-          )
-        }
+  <section class="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
+    <h1 class="font-serif text-5xl font-medium tracking-tight text-ink sm:text-6xl">
+      Contact
+    </h1>
+    <p class="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
+      Corrections, product suggestions, and questions go to email. We read
+      everything. We do not promise a same-day reply.
+    </p>
+    <dl class="mt-12 space-y-8 text-sm">
+      <div>
+        <dt class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold">
+          Email
+        </dt>
+        <dd class="mt-2">
+          <a class="text-lg text-ink hover:text-gold" href={`mailto:${site.email}`}>
+            {site.email}
+          </a>
+        </dd>
       </div>
-    </form>
+      <div>
+        <dt class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold">
+          Corrections
+        </dt>
+        <dd class="mt-2 max-w-md text-ink-soft">
+          If a spec, a price band, or a ranking is wrong, say so. Factual errors
+          get a fix and a new updated date. How that works is on <a class="text-gold hover:text-ink" href="/standards/">Standards</a>.
+        </dd>
+      </div>
+      <div>
+        <dt class="text-[11px] font-medium uppercase tracking-[0.18em] text-gold">
+          Product pitches
+        </dt>
+        <dd class="mt-2 max-w-md text-ink-soft">
+          If you want a product considered, send the facts: price, materials,
+          where it is made, and why it belongs here. Photos help. Hype does not.
+          Unsolicited boxes do not get a review. Payment does not buy a ranking.
+        </dd>
+      </div>
+    </dl>
   </section>
 </BaseLayout>

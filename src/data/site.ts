@@ -20,5 +20,20 @@ export const site = {
 export const nav = [
   { href: '/blog/', label: 'Recommendations' },
   { href: '/about/', label: 'About' },
+  { href: '/standards/', label: 'Standards' },
   { href: '/contact/', label: 'Contact' },
+] as const;
+
+export const footerExplore = [
+  { href: '/blog/', label: 'All recommendations' },
+  { href: '/about/', label: 'About' },
+  { href: '/standards/', label: 'Standards' },
+  { href: '/contact/', label: 'Contact' },
+  { href: '/rss.xml', label: 'RSS' },
+] as const;
+
+export const footerLegal = [
+  { href: '/how-we-make-money/', label: 'How we make money' },
+  { href: '/privacy/', label: 'Privacy' },
+  { href: '/terms/', label: 'Terms' },
 ] as const;

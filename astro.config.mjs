@@ -10,6 +10,11 @@ const indexedCategories = publishedCategorySlugs();
 export default defineConfig({
   site: 'https://selectedbymen.com',
   trailingSlash: 'always',
+  redirects: {
+    '/privacy-policy': '/privacy/',
+    '/affiliate-disclosure': '/how-we-make-money/',
+    '/terms-of-service': '/terms/',
+  },
   prefetch: {
     prefetchAll: true,
   },
@@ -18,6 +23,9 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         if (page.includes('/404')) return false;
+        if (page.includes('/privacy-policy')) return false;
+        if (page.includes('/affiliate-disclosure')) return false;
+        if (page.includes('/terms-of-service')) return false;
         const categoryMatch = page.match(/\/category\/([^/]+)\/?$/);
         if (categoryMatch && !indexedCategories.has(categoryMatch[1])) {
           return false;

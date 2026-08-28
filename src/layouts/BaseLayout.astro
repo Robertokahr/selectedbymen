@@ -7,6 +7,7 @@ import { site } from '../data/site';
 
 interface Props {
   title: string;
+  seoTitle?: string;
   description?: string;
   image?: string;
   type?: 'website' | 'article';
@@ -38,6 +39,8 @@ const jsonLd = {
       description: site.description,
       publisher: { '@id': `${site.url}/#organization` },
       inLanguage: 'en-US',
+      publishingPrinciples: `${site.url}/standards/`,
+      ethicsPolicy: `${site.url}/how-we-make-money/`,
     },
   ],
 };

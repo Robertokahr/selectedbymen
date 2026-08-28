@@ -3,6 +3,7 @@ import { site } from '../data/site';
 
 interface Props {
   title: string;
+  seoTitle?: string;
   description?: string;
   image?: string;
   type?: 'website' | 'article';
@@ -14,6 +15,7 @@ interface Props {
 
 const {
   title,
+  seoTitle,
   description = site.description,
   image,
   type = 'website',
@@ -24,7 +26,8 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
-const pageTitle = title === site.name ? title : `${title} · ${site.name}`;
+const documentTitle = seoTitle ?? title;
+const pageTitle = documentTitle === site.name ? documentTitle : `${documentTitle} · ${site.name}`;
 const og = image ?? new URL('/og.jpg', site.url).href;
 ---
 

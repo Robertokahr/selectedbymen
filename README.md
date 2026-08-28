@@ -110,7 +110,7 @@ Look: dark, charcoal, forest green, brass. Do not change CSS or layout unless as
 
 1. Pon tu tag de Amazon en `src/data/site.ts` (`amazonTag`).
 2. Revisa email y redes en el mismo archivo.
-3. Opcional: Formspree en `.env` con `PUBLIC_FORMSPREE_ID` para el formulario de contacto.
+3. Contacto es email (`/contact/`). No hay formulario.
 
 ## Estructura
 
